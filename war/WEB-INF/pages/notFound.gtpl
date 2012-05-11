@@ -1,48 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<% include '/WEB-INF/includes/meta.gtpl' %>
-	<title>Page not found -- Guillaume Laforge's Blog</title>
-</head>
+	<head>
+		<% include '/WEB-INF/includes/meta.gtpl' %>
+		<title>Page not found -- Marcin Erdmann's Blog</title>
+	</head>
 
-<body id="top">
+	<% include '/WEB-INF/includes/beforeContent.gtpl' %>
 
-<% include '/WEB-INF/includes/header.gtpl' %>
-<% include '/WEB-INF/includes/navigation.gtpl' %>
+	<h1 class="page-heading">Page not found</h1>
 
-<div id="content-wrapper">
-	<div class="center-wrapper">
+	<p>The page you were looking for couldn't be found.</p>
 
-		<div class="content" id="content-two-columns">
+	<p>Otherwise, please one of the links in the navigation bars to find your way in this website.</p>
 
-			<div id="main-wrapper">
-				<div id="main">
-
-					<div class="post">
-
-						<div class="post-title"><h1>Page not found</h1></div>
-
-						<div class="post-body">
-                            <p>The page you were looking for couldn't be found.</p>
-
-                            <p>Otherwise, please one of the links in the navigation bars
-                            to find your way in this website.</p>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-
-            <% include '/WEB-INF/includes/left.gtpl' %>
-		</div>
-
-	</div>
-</div>
-
-<% include '/WEB-INF/includes/footer.gtpl' %>
-<% include '/WEB-INF/includes/bottom.gtpl' %>
-
+	<% include '/WEB-INF/includes/afterContent.gtpl' %>
 </body>
 </html>

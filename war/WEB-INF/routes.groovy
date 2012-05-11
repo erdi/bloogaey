@@ -2,9 +2,9 @@ def cache = localMode ? 0 : 1.hour
 
 get "/",                                forward: '/home.groovy',                                                            cache: cache
 get "/p@p",                             forward: '/home.groovy?page=@p',                      validate: { p ==~ /\d+/ },    cache: cache
+get "/page/@page",                      forward: '/home.groovy?staticPage=@page',                                           cache: cache
 
 get "/article/@title",                  forward: '/article.groovy?title=@title',                                            cache: cache
-get "/page/@title",                     forward: '/article.groovy?title=@title',                                            cache: cache
 get "/live/@title",                     forward: '/article.groovy?title=@title'
 
 get "/archives/p@p",                    forward: '/archive.groovy?page=@p',                   validate: { p ==~ /\d+/ },    cache: cache
@@ -31,9 +31,6 @@ get "/admin/mediaSelector",             forward: '/admin/mediaSelector.groovy'
 get "/admin/clearCache",                forward: '/admin/clearCache.groovy'
 get "/admin/titleExists",               forward: '/admin/titleExists.groovy'
 
-//get "/admin/export",                    forward: '/admin/export.groovy'
-//get "/admin/import",                    forward: '/admin/import.groovy'
-
 post "/admin/media/add",                forward: '/admin/mediaAdd.groovy'
 post "/admin/media/delete/@bk",         forward: '/admin/mediaDelete.groovy?blobKey=@bk'
 post "/admin/posts/delete/@id",         forward: '/admin/postDelete.groovy?id=@id'
@@ -47,8 +44,6 @@ get "/not-found",                       forward: '/WEB-INF/pages/notFound.gtpl',
 // route for 403 errors defined in web.xml
 get "/not-allowed",                     forward: '/WEB-INF/pages/notAllowed.gtpl',                                          cache: 24.hours
 // when some error happens
-get "/error",                           forward: '/WEB-INF/pages/error.gtpl'
+get "/error",                           forward: 'error.groovy'
 
 get "/favicon.ico",                     redirect: "/images/gaelyk-favicon.png"
-
-email to: "/admin/email.groovy"

@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     $(".chzn-select").chosen();
 
-    var editor = $("#content").cleditor({
+    var editor = $("#cleditor").cleditor({
         width: 600,
         height: 400,
         useCSS: true,
@@ -59,8 +59,8 @@ $(document).ready(function() {
         // catch up / down arrows to increase / decrease date field values
         if (event.keyCode == 38 || event.keyCode == 40) {
             var direction = event.keyCode == 38 ? 1 : -1;
-            var date = new Date(event.srcElement.value);
-            var position = event.srcElement.selectionStart;
+            var date = new Date(event.target.value);
+            var position = event.target.selectionStart;
             switch (position) {
                 case 0:
                 case 1:
@@ -90,13 +90,13 @@ $(document).ready(function() {
                     date.setMinutes(date.getMinutes() + direction);
                     break;
             }
-            event.srcElement.value = '' + date.getFullYear() + '/' +
+            event.target.value = '' + date.getFullYear() + '/' +
                     (date.getMonth()+1 < 10 ? '0' + (date.getMonth()+1) : (date.getMonth()+1)) + '/' +
                     (date.getDate()    < 10 ? '0' +  date.getDate()     :  date.getDate())     + ' ' +
                     (date.getHours()   < 10 ? '0' +  date.getHours()    :  date.getHours())    + ':' +
                     (date.getMinutes() < 10 ? '0' +  date.getMinutes()  :  date.getMinutes());
-            event.srcElement.selectionStart = position;
-            event.srcElement.selectionEnd = position;
+            event.target.selectionStart = position;
+            event.target.selectionEnd = position;
         }
         // allow left / right arrow to move to a different date field, as well as tab
         if (event.keyCode != 37 && event.keyCode != 39 && event.keyCode != 9) {

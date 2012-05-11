@@ -6,13 +6,6 @@ request.posts  = datastore.execute {
     and type == 'post'
 }
 
-request.pages  = datastore.execute {
-    from posts
-    sort desc by created
-    where draft == false
-    and type == 'page'
-}
-
 request.drafts  = datastore.execute {
     from posts
     sort desc by created

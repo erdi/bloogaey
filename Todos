@@ -1,0 +1,27 @@
+meta:
+- google tracker  - analytics
+- atom feed
+- atom link
+- feefburner
+
+admin:
+- check if there are three more links
+
+styling:
+- do not use post wrappers everywhere
+- nice list
+
+- site map
+- sharing, commenting?
+
+search:
+- new custom search id
+
+- atom link
+
+- use markdown
+
+-static pages fix
+- remove all laforge
+-go through all pages
+- remove unused controllers

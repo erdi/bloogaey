@@ -1,53 +1,38 @@
-<div id="navigation-wrapper">
-	<div id="navigation-wrapper-2">
-		<div class="center-wrapper">
+<div id="navigation">
+	<div id="nav1">
+		<ul>
+			<%
+				def originalUri = request.getAttribute('originalURI')
+				def styles = ['^/$', '(archives)|(category)', 'social', 'search', 'aboutThisSite', 'contact', 'bio', 'posts', 'categories', 'media'].collect {
+					originalUri =~ it ? 'current_page_item' : ''
+				}
 
-			<div id="navigation">
+				def links = [
+						'/': 'Home',
+						'/archives': 'Archives',
+						'/social': 'Twitter',
+						'/search': 'Search',
+						'/page/aboutThisSite': 'Site',
+						'/page/contact': 'Contact',
+						'/page/bio': 'Bio',
+						'/admin/posts': 'Posts',
+						'/admin/categories': 'Categories',
+						'/admin/media': 'Media'
+				].entrySet().asList()
 
-				<ul class="tabbed">
-                    <%
-                        def homeStyle = ''
-                        def categoriesStyle = ''
-                        def postsStyle = ''
-                        def mediaStyle = ''
-                        def archivesStyle = ''
-                        def searchStyle = ''
-                        def socialStyle = ''
-
-                        def originalURI = request.getAttribute('originalURI')
-                        if (originalURI.contains('posts')) {
-                            postsStyle = 'current_page_item'
-                        } else if (originalURI.contains('categories')) {
-                            categoriesStyle = 'current_page_item'
-                        } else if (originalURI.contains('media')) {
-                            mediaStyle = 'current_page_item'
-                        } else if (originalURI.contains('social')) {
-                            socialStyle = 'current_page_item'
-                        } else if (originalURI.contains('search')) {
-                            searchStyle = 'current_page_item'
-                        } else if (originalURI.contains('archives') || originalURI.contains('category')) {
-                            archivesStyle = 'current_page_item'
-                        } else {
-                            homeStyle = 'current_page_item'
-                        }
-
-                    %>
-                    <li class="${homeStyle}"><a href="/">Home</a></li>
-                    <li class="${archivesStyle}"><a href="/archives">Archives</a></li>
-                    <li class="${socialStyle}"><a href="/social">Social</a></li>
-                    <li class="${searchStyle}"><a href="/search">Search</a></li>
-                    <% if (user && users.isUserLoggedIn() && users.isUserAdmin() && originalURI.contains('admin')) { %>
-                    <li><span style="color: white; font-size: 2.2em; position: relative; top: 4px; margin-left: 10px; margin-right: 10px;">|</span></li>
-                    <li class="${postsStyle}"><a href="/admin/posts">Posts</a></li>
-                    <li class="${categoriesStyle}"><a href="/admin/categories">Categories</a></li>
-                    <li class="${mediaStyle}"><a href="/admin/media">Media</a></li>
-                    <% } %>
-				</ul>
-
-				<div class="clearer">&nbsp;</div>
-
-			</div>
-
-		</div>
+				links[0..6].eachWithIndex { entry, index ->
+			%>
+				<li class="${styles[index]}"><a href="${entry.key}">${entry.value}</a></li>
+			<% }
+				if (user && users.isUserLoggedIn() && users.isUserAdmin()) {
+					links[7..9].eachWithIndex { entry, index ->
+			%>
+						<li class="${styles[index + 7]}"><a href="${entry.key}">${entry.value}</a></li>
+			<%
+					}
+				}
+			%>
+		</ul>
+		<div class="clearer">&nbsp;</div>
 	</div>
 </div>

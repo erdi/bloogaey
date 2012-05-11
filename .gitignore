@@ -3,3 +3,5 @@
 *.ipr
 *.iws
 war/WEB-INF/lib
+war/WEB-INF/appengine-generated
+build

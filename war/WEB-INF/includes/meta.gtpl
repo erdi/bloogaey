@@ -1,9 +1,9 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta name="description" content="Guillaume Laforge's blog"/>
-    <meta name="keywords" content="Guillaume Laforge, groovy, groovy language, groovy programming, groovy programming language, gaelyk, grails, java, dynamic language, programming, springsource, vmware, gradle, spock, griffon, conference" />
-    <meta name="author" content="Guillaume Laforge" />
+    <meta name="description" content="Marcin Erdmann's blog"/>
+    <meta name="keywords" content="Marcin Erdmann, groovy, groovy language, groovy programming, groovy programming language, grails, geb, java, dynamic language, programming" />
+    <meta name="author" content="Marcin Erdmann" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen" />
-    <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/glaforge" title="Guillaume Laforge's blog feed"/>
+    <!-- %{--<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/glaforge" title="Guillaume Laforge's blog feed"/>
 
     <% if (!request.getAttribute('originalURI').contains('/admin')) { %>
     <script type="text/javascript">
@@ -17,4 +17,5 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
-    <% } %>
+    <% } %>--}% -->
+

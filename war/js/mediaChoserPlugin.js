@@ -18,9 +18,9 @@
     var page = 0;
 
     function addImgClickHandler() {
-        $('#imgs img').click(function(img) {
-            console.log(img.srcElement.getAttribute('fullsrc'));
-            $('#imgToInsert').val(img.srcElement.getAttribute('fullsrc'));
+        $('#imgs img').click(function(e) {
+            console.log($(e.target).attr('fullsrc'));
+            $('#imgToInsert').val($(e.target).attr('fullsrc'));
             $('#submit').click();
         });
     }

@@ -3,6 +3,8 @@ $(document).ready(function() {
 
     $(".chzn-select").chosen();
 
+    $("textarea[name='content']").tabby()
+
     $('#titleInput').blur(function(evt) {
         var title = $(this).val();
         if (title.length == 0) {

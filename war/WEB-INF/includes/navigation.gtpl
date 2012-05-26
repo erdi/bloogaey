@@ -33,6 +33,9 @@
 				}
 			%>
 		</ul>
+		<a id="feed" href="http://feeds.feedburner.com/MarcinErdmannsBlogFeed">
+			<img alt="Atom feed" src="/images/feed.png"/>
+		</a>
 		<div class="clearer">&nbsp;</div>
 	</div>
 </div>

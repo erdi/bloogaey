@@ -7,5 +7,5 @@ if (post) {
     forward '/WEB-INF/pages/article.gtpl'
 } else {
     request.title = params.title
-    forward '/WEB-INF/pages/notFound.gtpl'
+    forward 'not-found'
 }

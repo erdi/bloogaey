@@ -3,7 +3,7 @@
     <meta name="keywords" content="Marcin Erdmann, groovy, groovy language, groovy programming, groovy programming language, grails, geb, java, dynamic language, programming" />
     <meta name="author" content="Marcin Erdmann" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen" />
-    <!-- <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/glaforge" title="Guillaume Laforge's blog feed"/> -->
+    <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/MarcinErdmannsBlogFeed" title="Marcin Erdmann's blog feed"/>
 
 
     <% if (!request.getAttribute('originalURI').contains('/admin')) { %>

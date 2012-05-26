@@ -741,3 +741,8 @@ pre, blockquote, fieldset, .framed {
     position: relative;
     top: 3px;
 }
+
+a#feed {
+    float: right;
+    padding: 10px 1px 0 0;
+}

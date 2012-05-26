@@ -1,16 +1,3 @@
-meta:
-- atom feed
-- atom link
-- feefburner
-
-styling:
-- do not use post wrappers everywhere
-- nice list
-
-search:
-- atom link
-
 - go through all pages
-- remove unused controllers
 
 - fix tab in textarea

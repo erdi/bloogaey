@@ -23,5 +23,5 @@ if (params.category) {
 
     forward '/WEB-INF/pages/archive.gtpl'
 } else {
-    forward '/WEB-INF/pages/notfound.gtpl'
+    forward 'not-found'
 }

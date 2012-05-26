@@ -24,7 +24,7 @@
 			%>
 				<li class="${styles[index]}"><a href="${entry.key}">${entry.value}</a></li>
 			<% }
-				if (user && users.isUserLoggedIn() && users.isUserAdmin()) {
+				if (user && users.isUserLoggedIn() && users.isUserAdmin() && originalUri.contains('admin')) {
 					links[7..9].eachWithIndex { entry, index ->
 			%>
 						<li class="${styles[index + 7]}"><a href="${entry.key}">${entry.value}</a></li>

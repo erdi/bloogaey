@@ -2,7 +2,7 @@
 	<div id="sidebar">
 		<%
 			def originalURI = request.getAttribute('originalURI')
-			def isAdmin = user && users.isUserLoggedIn() && users.isUserAdmin()
+			def isAdmin = user && users.isUserLoggedIn() && users.isUserAdmin() && originalURI.contains('admin')
 			if (isAdmin) {
 		%>
 				<div class="box">
@@ -21,19 +21,6 @@
 		<%
     		}
 		%>
-
-		<div class="box">
-			<div class="box_title">Categories</div>
-			<div class="box_content">
-				<ul class="nice-list">
-					<% datastore.execute{ from categories sort asc by name }.each { category -> %>
-						<li>
-							<a href="/category/${category.name}" alt="${category.description}">${category.name}</a>
-						</li>
-					<% } %>
-				</ul>
-			</div>
-		</div>
 
 		<%
 			if (!isAdmin) {
@@ -60,5 +47,19 @@
 		<%
 			}
 		%>
+
+		<div class="box">
+			<div class="box_title">Categories</div>
+			<div class="box_content">
+				<ul class="nice-list">
+					<% datastore.execute{ from categories sort asc by name }.each { category -> %>
+						<li>
+							<a href="/category/${category.name}" alt="${category.description}">${category.name}</a>
+						</li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+
 	</div>
 </div>

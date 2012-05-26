@@ -746,3 +746,18 @@ a#feed {
     float: right;
     padding: 10px 1px 0 0;
 }
+
+pre {
+    margin: 2px 0 12px;
+    overflow-x: auto;
+    background-color: white;
+}
+
+#main .post-body ul {
+    margin: -0.8em 1.5em 1.3em;
+}
+.post-body li {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: 0.2em;
+}

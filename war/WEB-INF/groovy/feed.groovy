@@ -18,8 +18,8 @@ def posts = datastore.execute {
 def serverRoot = "http://${request.serverName}${request.serverPort != 80 ? ":$request.serverPort" : ''}"
 
 html.feed(xmlns: "http://www.w3.org/2005/Atom") {
-    title "Guillaume Laforge's blog feed"
-    subtitle "On all things Groovy!"
+    title "Marcin Erdmann's blog feed"
+    subtitle "Groovy, Grails, Geb..."
     link href: serverRoot, rel: "self"
     updated isoTime.format(new Date())
     generator(uri: "http://gaelyk.appspot.com", version: app.gaelyk.version, "Gaelyk lightweight Groovy toolkit for Google App Engine")
@@ -42,7 +42,7 @@ html.feed(xmlns: "http://www.w3.org/2005/Atom") {
                 mkp.yield content
             }
             author {
-                name "Guillaume Laforge"
+                name "Marcin Erdmann"
             }
         }
     }

@@ -25,7 +25,7 @@
 						<div class="post-title"><h1><a href="/article/${post.key.name}">${post.title}</a></h1></div>
 						<div class="post-date">
 						<% if (user && users.isUserLoggedIn() && users.isUserAdmin()) { %>
-							<form action="/admin/posts/edit/${post.key.name}" method="post">
+							<form action="/admin/posts/edit/${post.key.name}" method="get">
 								<input type="image" src="/images/pencil.png" alt="Edit" align="right">
 							</form>
 						<% } %>

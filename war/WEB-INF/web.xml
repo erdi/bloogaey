@@ -30,6 +30,10 @@
         <!-- usefule for warmup requests -->
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>RemoteControlServlet</servlet-name>
+        <servlet-class>groovyx.gaelyk.remote.RemoteControlServlet</servlet-class>
+    </servlet>
 
     <filter>
         <filter-name>RoutesFilter</filter-name>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>TemplateServlet</servlet-name>
         <url-pattern>*.gtpl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoteControlServlet</servlet-name>
+        <url-pattern>/remote-control</url-pattern>
     </servlet-mapping>
 
     <filter-mapping>

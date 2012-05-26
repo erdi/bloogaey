@@ -6,13 +6,10 @@
 	<title>Administration: Edit Posts</title>
     <% include '/WEB-INF/includes/meta.gtpl' %>
 
-    <link rel="stylesheet" type="text/css" href="/css/jquery.cleditor.css" />
     <link rel="stylesheet" type="text/css" href="/css/chosen.css">
 
     <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
     <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.cleditor.js"></script>
-    <script type="text/javascript" src="/js/mediaChoserPlugin.js"></script>
     <script type="text/javascript" src="/js/postEdit.js"></script>
 </head>
 	<%
@@ -93,7 +90,7 @@
 				<div class="form-row">
 					<div class="form-property form-required">Content</div>
 					<div class="form-value">
-						<textarea id="cleditor" rows="10" cols="72" name="content">${ post ? post.content : ''}</textarea>
+						<textarea rows="30" cols="87" name="content">${ post ? post.markdown : ''}</textarea>
 					</div>
 					<div class="clearer">&nbsp;</div>
 				</div>

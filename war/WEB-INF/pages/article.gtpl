@@ -11,9 +11,9 @@
     <meta itemprop="name" content="${post.title}">
     <meta itemprop="description" content="${post.content.replaceAll('<[^>]*>', ' ').replaceAll('&[^;]*;', ' ').take(200)}...">
 
-    <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher:'4ebd393c-0ce9-4527-a07c-7c97bf04495f'});</script>
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "cbddf18f-20e1-4279-aa2e-a4b1017a2ec8"}); </script>
 </head>
 
 	<% include '/WEB-INF/includes/beforeContent.gtpl' %>
@@ -23,7 +23,7 @@
 
 			<div class="post-date">
 				<% if (user && users.isUserLoggedIn() && users.isUserAdmin()) { %>
-				<form action="/admin/posts/edit/${post.key.name}" method="post">
+				<form action="/admin/posts/edit/${post.key.name}" method="get">
 					<input type="image" src="/images/pencil.png" alt="Edit" align="right">
 				</form>
 				<% } %>
@@ -52,15 +52,15 @@
 
 		<% if (request.getAttribute('originalURI').contains('article')) { %>
 		<div class="text-center">
-			<span  class='st_twitter_large' ></span>
-			<span  class='st_dzone_large' ></span>
-			<span  class='st_delicious_large' ></span>
-			<span  class='st_reddit_large' ></span>
-			<span  class='st_linkedin_large' ></span>
-			<span  class='st_google_reader_large' ></span>
-			<span  class='st_facebook_large' ></span>
-			<span  class='st_email_large' ></span>
-			<span  class='st_sharethis_large' ></span>
+			<span class='st_twitter_large' displayText='Tweet'></span>
+			<span class='st_dzone_large' displayText='DZone'></span>
+			<span class='st_reddit_large' displayText='Reddit'></span>
+			<span class='st_digg_large' displayText='Digg'></span>
+			<span class='st_delicious_large' displayText='Delicious'></span>
+			<span class='st_google_reader_large' displayText='Google Reader'></span>
+			<span class='st_email_large' displayText='Email'></span>
+			<span class='st_googleplus_large' displayText='Google +'></span>
+			<span class='st_facebook_large' displayText='Facebook'></span>
 		</div>
 
 		<div id="comments">

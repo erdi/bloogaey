@@ -2,7 +2,7 @@ def cache = localMode ? 0 : 1.hour
 
 get "/",                                forward: '/home.groovy',                                                            cache: cache
 get "/p@p",                             forward: '/home.groovy?page=@p',                      validate: { p ==~ /\d+/ },    cache: cache
-get "/page/@page",                      forward: '/home.groovy?staticPage=@page',                                           cache: cache
+get "/page/@page",                      forward: '/staticPage.groovy?page=@page',                                           cache: cache
 
 get "/article/@title",                  forward: '/article.groovy?title=@title',                                            cache: cache
 get "/live/@title",                     forward: '/article.groovy?title=@title'
@@ -34,7 +34,7 @@ get "/admin/titleExists",               forward: '/admin/titleExists.groovy'
 post "/admin/media/add",                forward: '/admin/mediaAdd.groovy'
 post "/admin/media/delete/@bk",         forward: '/admin/mediaDelete.groovy?blobKey=@bk'
 post "/admin/posts/delete/@id",         forward: '/admin/postDelete.groovy?id=@id'
-post "/admin/posts/edit/@id",           forward: '/WEB-INF/pages/admin/postEdit.gtpl?id=@id'
+get "/admin/posts/edit/@id",           forward: '/WEB-INF/pages/admin/postEdit.gtpl?id=@id'
 post "/admin/posts/save",               forward: '/admin/postSave.groovy'
 post "/admin/categories/add",           forward: '/admin/categoryAdd.groovy'
 post "/admin/categories/delete/@cat",   forward: '/admin/categoryDelete.groovy?categoryName=@cat'

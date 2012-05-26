@@ -35,7 +35,7 @@
 				<form action="/admin/posts/delete/${post.key.name}" method="post">
 					<input type="image" src="/images/cross.png" alt="Delete it?" align="right">
 				</form>
-				<form action="/admin/posts/edit/${post.key.name}" method="post">
+				<form action="/admin/posts/edit/${post.key.name}" method="get">
 					<input type="image" src="/images/pencil.png" alt="Edit it" align="right">
 				</form>
 			<% if (post.type == 'page') { %>

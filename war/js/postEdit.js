@@ -3,22 +3,6 @@ $(document).ready(function() {
 
     $(".chzn-select").chosen();
 
-    var editor = $("#cleditor").cleditor({
-        width: 600,
-        height: 400,
-        useCSS: true,
-        docCSSFile: '/css/wysiwyg.css',
-        styles: [
-            ["Paragraph", "<p>"],
-            ["Header 1", "<h1>"],
-            ["Header 2", "<h2>"],
-            ["Header 3", "<h3>"],
-            ["Header 4","<h4>"],
-            ["Code sample", "<pre>"],
-            ["Quote", "<blockquote>"]
-        ]
-    });
-
     $('#titleInput').blur(function(evt) {
         var title = $(this).val();
         if (title.length == 0) {

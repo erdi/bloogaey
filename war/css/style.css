@@ -756,8 +756,12 @@ pre {
 #main .post-body ul {
     margin: -0.8em 1.5em 1.3em;
 }
-.post-body li {
+.post-body ul li {
     list-style-type: disc;
     list-style-position: inside;
     margin-bottom: 0.2em;
+}
+
+code {
+    font-size: 1.1em;
 }

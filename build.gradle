@@ -24,11 +24,12 @@ buildscript {
     })
 
     repositories {
+        mavenCentral()
         add gitHub()
     }
 
     dependencies {
-        classpath 'bmuschko:gradle-gae-plugin:0.5.1'
+        classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7'
         classpath 'bmuschko:gradle-gaelyk-plugin:0.1'
     }
 }
@@ -38,25 +39,9 @@ repositories {
     add gitHub()
 }
 
-configurations {
-    functionalTestCompile {
-        extendsFrom testCompile
-    }
-    functionalTestRuntime {
-        extendsFrom functionalTestCompile, testRuntime
-    }
-}
-
 sourceSets {
     main {
         output.classesDir = file('war/WEB-INF/classes')
-    }
-	functionalTest {
-        groovy {
-			srcDir file('src/functional/groovy')
-		}
-        compileClasspath = configurations.functionalTestCompile
-        runtimeClasspath = output + configurations.functionalTestRuntime
     }
 }
 
@@ -118,10 +103,6 @@ idea{
 			}
 		}
 	}
-	module {
-		scopes.TEST.plus += configurations.functionalTestCompile
-		scopes.TEST.plus += configurations.functionalTestRuntime
-	}
 }
 
 task wrapper(type: Wrapper) {
@@ -129,19 +110,4 @@ task wrapper(type: Wrapper) {
 	distributionUrl = "http://services.gradle.org/distributions/gradle-${gradleVersion}-bin.zip"
 }
 
-task functionalTest(type: Test, dependsOn: gaeRun) {
-	testClassesDir = sourceSets.functionalTest.output.classesDir
-    classpath = sourceSets.functionalTest.runtimeClasspath
-}
-
-check.dependsOn functionalTest
-
 gaeRun.dependsOn compileGroovy
-
-gradle.taskGraph.whenReady { taskGraph ->
-	if (taskGraph.hasTask(functionalTest)) {
-		gae {
-			daemon = true
-		}
-	}
-}

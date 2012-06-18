@@ -39,12 +39,6 @@ repositories {
 	mavenLocal()
 }
 
-sourceSets {
-	main {
-		output.classesDir = file('war/WEB-INF/classes')
-	}
-}
-
 dependencies {
 	def gaeVersion = '1.6.5'
 	def groovyVersion = '1.8.6'

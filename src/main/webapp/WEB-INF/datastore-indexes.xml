@@ -1,0 +1,21 @@
+<datastore-indexes autoGenerate='true'>
+
+	<datastore-index kind="posts" ancestor="false" source="manual">
+		<property name="draft" direction="asc"/>
+		<property name="type" direction="asc"/>
+		<property name="created" direction="desc"/>
+	</datastore-index>
+
+	<datastore-index kind="posts" ancestor="false" source="auto">
+		<property name="draft" direction="asc"/>
+		<property name="created" direction="desc"/>
+	</datastore-index>
+
+	<datastore-index kind="posts" ancestor="false" source="auto">
+		<property name="categories" direction="asc"/>
+		<property name="draft" direction="asc"/>
+		<property name="type" direction="asc"/>
+		<property name="created" direction="desc"/>
+	</datastore-index>
+
+</datastore-indexes>

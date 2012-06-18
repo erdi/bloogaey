@@ -3,8 +3,8 @@ package groovyx.gaelyk.remote
 import groovyx.remote.CommandChain
 
 class Receiver extends groovyx.remote.server.Receiver {
-	Receiver(ClassLoader classLoader, Map contextStorageSeed) {
-		super(classLoader, contextStorageSeed)
+	Receiver(Map contextStorageSeed) {
+		super(contextStorageSeed)
 	}
 
 	protected createInvoker(ClassLoader classLoader, CommandChain commandChain) {

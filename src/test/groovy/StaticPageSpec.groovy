@@ -1,10 +1,8 @@
-import spock.lang.Unroll
+import groovyx.gaelyk.spock.ConventionalGaelykUnitSpec
 import javax.servlet.ServletContext
+import spock.lang.Unroll
 
-class StaticPageSpec extends BaseSpec {
-	def setup() {
-		groovlet 'staticPage.groovy'
-	}
+class StaticPageSpec extends ConventionalGaelykUnitSpec {
 
 	@Unroll("we are forwarded to '#forward' if the requested #pageExistsText")
 	void 'request is forwarded to appropriate gtpl if the requested static page exists or not'() {

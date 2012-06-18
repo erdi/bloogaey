@@ -15,7 +15,7 @@ class PostEditSpec extends GebSpec {
 	}
 
 	def cleanup() {
-		remote.exec { datastore.iterate { select keys }.each { it.key.delete() } }
+		remote.exec { datastore.iterate { select keys }.each { it.delete() } }
 	}
 
 	void 'some basics'() {

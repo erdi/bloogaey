@@ -17,9 +17,7 @@ class RemoteControlServlet extends groovyx.remote.transport.http.RemoteControlSe
 	}
 
 	@Override
-	protected Receiver createReceiver() {
-		new Receiver(Thread.currentThread().contextClassLoader, [datastore: DatastoreServiceFactory.datastoreService])
+	protected groovyx.remote.server.Receiver createReceiver() {
+		new Receiver(datastore: DatastoreServiceFactory.datastoreService)
 	}
-
-
 }

@@ -1,3 +1,14 @@
-- go through all pages
+gaeExplodeWar.dependsOn gaelykPrecompileGroovlet
+gaeExplodeWar.dependsOn gaelykPrecompileTemplate
 
-- fix tab in textarea
+move to gaelyk plugin
+
+clean {
+	delete sourceSets*.output.classesDir
+}
+
+vs
+
+clean.doLast {
+	ant.delete dir: sourceSets.main.output.classesDir
+}

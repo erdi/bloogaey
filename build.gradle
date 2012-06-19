@@ -49,7 +49,7 @@ dependencies {
 	groovy "org.codehaus.groovy:groovy-all:$groovyVersion"
 
 	compile "org.markdownj:markdownj:0.3.0-1.0.2b4",
-			'org.codehaus.groovy.modules.remote:remote-transport-http:0.4-SNAPSHOT',
+			'org.gaelyk:gaelyk-remote:0.1',
 			'com.ocpsoft:ocpsoft-pretty-time:1.0.7'
 
 	testCompile 'org.spockframework:spock-core:0.6-groovy-1.8', {

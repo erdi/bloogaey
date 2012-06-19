@@ -1,11 +1,10 @@
 import org.apache.ivy.plugins.resolver.URLResolver
 
-apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'gae'
 apply plugin: 'gaelyk'
-apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'gae-geb'
 
 def compatibilityVersion = 1.5
 sourceCompatibility = compatibilityVersion
@@ -30,6 +29,7 @@ buildscript {
 	dependencies {
 		classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.2'
 		classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.3.2'
+		classpath 'org.gradle.api.plugins:gradle-gae-geb-plugin:0.2'
 	}
 }
 

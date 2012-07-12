@@ -733,10 +733,6 @@ pre, blockquote, fieldset, .framed {
     text-align: center;
 }
 
-#comments .idc-right {
-    display: none;
-}
-
 .nice-list.social img {
     position: relative;
     top: 3px;

@@ -1,14 +1,1 @@
-gaeExplodeWar.dependsOn gaelykPrecompileGroovlet
-gaeExplodeWar.dependsOn gaelykPrecompileTemplate
-
-move to gaelyk plugin
-
-clean {
-	delete sourceSets*.output.classesDir
-}
-
-vs
-
-clean.doLast {
-	ant.delete dir: sourceSets.main.output.classesDir
-}
+Use functional test tools when ready

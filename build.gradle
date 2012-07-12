@@ -11,38 +11,26 @@ sourceCompatibility = compatibilityVersion
 targetCompatibility = compatibilityVersion
 
 buildscript {
-	ext.set('gitHub', {
-		def resolver = new URLResolver()
-
-		resolver.with {
-			name = 'GitHub'
-			addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
-		}
-
-		resolver
-	})
-
 	repositories {
 		mavenCentral()
 	}
 
 	dependencies {
 		classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.2'
-		classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.3.2'
-		classpath 'org.gradle.api.plugins:gradle-gae-geb-plugin:0.2'
+		classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.3.3'
+		classpath 'org.gradle.api.plugins:gradle-gae-geb-plugin:0.3'
 	}
 }
 
 repositories {
 	mavenCentral()
-	add gitHub()
 	mavenLocal()
 }
 
 dependencies {
-	def gaeVersion = '1.6.5'
+	def gaeVersion = '1.7.0'
 	def groovyVersion = '1.8.6'
-	def gaelykVersion = '1.2'
+	def gaelykVersion = '1.1'
 
 	compile "org.gaelyk:gaelyk:$gaelykVersion"
 	gaeSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
@@ -69,9 +57,6 @@ gae {
 	warDir = file('src/main/webapp/')
 }
 
-gaeExplodeWar.dependsOn gaelykPrecompileGroovlet
-gaeExplodeWar.dependsOn gaelykPrecompileTemplate
-
 sourceSets.main.output.classesDir = 'src/main/webapp/WEB-INF/classes'
 
 clean {
@@ -85,7 +70,6 @@ task copyRuntimeLibraries(type: Sync) {
 	into webAppLibDirName
 }
 
-gaeRun.dependsOn compileGroovy
 gaeRun.dependsOn copyRuntimeLibraries
 
 idea {

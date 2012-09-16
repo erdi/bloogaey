@@ -23,9 +23,6 @@ buildscript {
 
 repositories {
 	mavenCentral()
-	maven {
-		url 'https://oss.sonatype.org/content/repositories/orggaelyk-700/'
-	}
 }
 
 dependencies {

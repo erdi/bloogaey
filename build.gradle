@@ -87,8 +87,3 @@ idea {
 		}
 	}
 }
-
-task wrapper(type: Wrapper) {
-	gradleVersion = '1.0-rc-3'
-	distributionUrl = "http://services.gradle.org/distributions/gradle-${gradleVersion}-bin.zip"
-}

@@ -16,15 +16,16 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.2'
-		classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.3.3'
+		classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.4'
 		classpath 'org.gradle.api.plugins:gradle-gae-geb-plugin:0.3'
 	}
 }
 
 repositories {
 	mavenCentral()
-	mavenLocal()
+	maven {
+		url 'https://oss.sonatype.org/content/repositories/orggaelyk-700/'
+	}
 }
 
 dependencies {
@@ -36,6 +37,8 @@ dependencies {
 	gaeSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
 	groovy "org.codehaus.groovy:groovy-all:$groovyVersion"
 
+	runtime 'org.gaelyk:gaelyk-functional-test-datastore-builder:0.1'
+
 	compile "org.markdownj:markdownj:0.3.0-1.0.2b4",
 			'org.gaelyk:gaelyk-remote:0.1',
 			'com.ocpsoft:ocpsoft-pretty-time:1.0.7'
@@ -46,31 +49,9 @@ dependencies {
 	testCompile 'org.gaelyk:gaelyk-spock:0.3.0.1',
 			"com.google.appengine:appengine-api-stubs:$gaeVersion",
 			"com.google.appengine:appengine-testing:$gaeVersion"
-	functionalTestCompile 'org.codehaus.geb:geb-spock:0.7.0',
-			'org.seleniumhq.selenium:selenium-firefox-driver:2.22.0'
-	gaeSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
+	functionalTestCompile 'org.gaelyk:gaelyk-functional-test:0.1',
+			'org.seleniumhq.selenium:selenium-firefox-driver:2.25.0'
 }
-
-gae {
-	downloadSdk = true
-	optimizeWar = true
-	warDir = file('src/main/webapp/')
-}
-
-sourceSets.main.output.classesDir = 'src/main/webapp/WEB-INF/classes'
-
-clean {
-	delete sourceSets*.output.classesDir
-}
-
-task copyRuntimeLibraries(type: Sync) {
-	def webAppLibDirName = 'src/main/webapp/WEB-INF/lib'
-	description = "Copies runtime libraries to $webAppLibDirName."
-	from configurations.runtime
-	into webAppLibDirName
-}
-
-gaeRun.dependsOn copyRuntimeLibraries
 
 idea {
 	project {

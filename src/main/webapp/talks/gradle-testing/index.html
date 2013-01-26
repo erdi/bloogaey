@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head> 
+    <meta charset="utf-8" /> 
+    <link rel="stylesheet" href="style/reset.less.css" /> 
+    <link rel="stylesheet" href="style/base.less.css" /> 
+    <link rel="stylesheet" href="style/code.less.css" />  
+    <title>Test driving Gaelyk applications</title>
+    <script src="deckjs/jquery-1.7.min.js"></script> 
+    <script src="deckjs/modernizr.custom.js"></script> 
+    <script src="deckjs/core/deck.core.js"></script> 
+    <link rel="stylesheet" href="deckjs/core/deck.core.css" /> 
+    <link rel="stylesheet" href="deckjs/themes/transition/horizontal-slide.css" /> 
+    <script src="deckjs/extensions/hash/deck.hash.js"></script> 
+    <script src="deckjs/extensions/notes/deck.notes.js"></script> 
+    <script src="deckjs/extensions/clone/deck.clone.js"></script> 
+    <script src="deckjs/extensions/scale-selector/deck.scale-selector.js"></script> 
+    <link rel="stylesheet" href="deckjs/extensions/scale-selector/deck.scale-selector.css" /> 
+    <link rel="stylesheet" href="style/slideshow.less.css" /> 
+    <script src="init.js"></script> 
+  </head> 
+  <body class=" deck-container"> 
+    <section class="slide title-slide"> 
+      <div class="inner"> 
+        <div class="title-slide-content"> 
+          <h1>Gaelyk</h1> 
+          <p>Test driving development of Gaelyk applications</p> 
+        </div> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Agenda</h2> 
+        <p>Introduction</p> 
+        <p>Unit testing with Gaelyk Spock Helpers</p> 
+        <p>Functional testing with Geb and Gaelyk Functional Test Tools</p> 
+        <p>Live TDD demo</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>About Me</h2> 
+        <p>Grails Developer at BSkyB</p> 
+        <p>Groovy user since 2010</p> 
+        <p>Groovy and Open Source enthusiast</p> 
+        <p>Geb committer</p> 
+        <p>Gaelyk committer</p> 
+        <p>Contributed to other Groovy projects: Grails, Gradle and Codenarc</p> 
+        <p>TDD practitioner</p> 
+        <p>This-code-is-not-clean-moaner ;)</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide title-slide"> 
+      <div class="inner"> 
+        <div class="title-slide-content"> 
+          <h1>3 simple questions on Gaelyk</h1> 
+        </div> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Gaelyk</h2> 
+        <p>Created by Guillaume</p> 
+        <p>A lightweight Groovy toolkit for Google App Engine</p> 
+        <p>Applications built using Groovlets and Groovy Templates</p> 
+        <p>Own URL routing system</p> 
+        <p>Lots of syntactic sugar for GAE datastore and services</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide title-slide"> 
+      <div class="inner"> 
+        <div class="title-slide-content"> 
+          <h1>So, how do I test it?</h1> 
+        </div> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Gaelyk Spock Helpers</h2> 
+        <p>Initially created by Marco Vermeulen (@marcoVermeulen)</p> 
+        <p>Maintained by Vladim&iacute;r Oran&yacute; (@musketyr)</p> 
+        <p>Provides base Spock specification classes for testing Groovlets and routes</p> 
+        <p>Targeted at making it easier to write unit tests for Gaelyk applications</p> 
+        <p>Uses service mocks from appengine-testing and Spock mocks where service mocks are unavailable or it's more convenient</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Base specifications</h2> 
+        <p>GaelykUnitSpec</p> 
+        <p>ConventionalGaelykUnitSpec</p> 
+        <p>GaelykRoutingSpec</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Basic example - code</h2> 
+        <p><code><span class="java_plain">basicGroovlet</span><span class="java_separator">.</span><span class="java_plain">groovy</span></code> located in <code><span class="java_plain">src</span><span class="java_operator">/</span><span class="java_plain">webapp</span><span class="java_operator">/</span><span class="java_plain">WEB</span><span class="java_operator">-</span><span class="java_plain">INF</span><span class="java_operator">/</span><span class="java_plain">groovy</span><span class="java_operator">/</span><span class="java_plain"></span></code></p> 
+        <pre class=" code"><code><span class="java_plain">request</span><span class="java_separator">.</span><span class="java_plain">hello&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Hello&nbsp;${params.name}!&quot;</span><span class="java_plain"></span>
+<span class="java_plain">forward&nbsp;</span><span class="java_literal">'/WEB-INF/pages/hello.gtpl'</span><span class="java_plain"></span></code></pre> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Basic example - test</h2> 
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">BasicGroovletSpec</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">GaelykUnitSpec</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;setup</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;groovlet&nbsp;</span><span class="java_literal">'basicGroovlet.groovy'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;</span><span class="java_literal">'hello&nbsp;message&nbsp;is&nbsp;constructed'</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicGroovlet</span><span class="java_separator">.</span><span class="java_plain">params</span><span class="java_separator">.</span><span class="java_plain">name&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">'Gaelyk'</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicGroovlet</span><span class="java_separator">.</span><span class="java_plain">get</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicGroovlet</span><span class="java_separator">.</span><span class="java_plain">request</span><span class="java_separator">.</span><span class="java_plain">hello&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">'Hello&nbsp;Gaelyk!'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Basic example - conventions</h2> 
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">BasicGroovletSpec</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">ConventionalGaelykUnitSpec</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;</span><span class="java_literal">'hello&nbsp;message&nbsp;is&nbsp;constructed'</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicGroovlet</span><span class="java_separator">.</span><span class="java_plain">params</span><span class="java_separator">.</span><span class="java_plain">name&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">'Gaelyk'</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicGroovlet</span><span class="java_separator">.</span><span class="java_plain">get</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicGroovlet</span><span class="java_separator">.</span><span class="java_plain">request</span><span class="java_separator">.</span><span class="java_plain">hello&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">'Hello&nbsp;Gaelyk!'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basicGroovlet</span><span class="java_separator">.</span><span class="java_plain">forward&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">'/WEB-INF/pages/hello.gtpl'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Other GaelykUnitSpec features</h2> 
+        <p>Read and modify variables in Groovlet binding</p> 
+        <p>Verify interactions with the response to check what was written out</p> 
+        <p>Check state of the datastore and GAE services after Groovlet execution</p> 
+        <p>See what has been logged</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Routes example - code</h2> 
+        <pre class=" code"><code><span class="java_plain">get&nbsp;</span><span class="java_literal">'/about'</span><span class="java_separator">,</span><span class="java_plain">&nbsp;forward</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">'/WEB-INF/pages/about.gtpl'</span><span class="java_plain"></span>
+<span class="java_plain">post&nbsp;</span><span class="java_literal">'/number/@number'</span><span class="java_separator">,</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;redirect</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">'/number.groovy?number=@number'</span><span class="java_separator">,</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;validate</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;number</span><span class="java_separator">.</span><span class="java_plain">isNumber</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span></code></pre> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Routes example - test</h2> 
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">RoutesSpec</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">GaelykRoutingSpec</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;setup</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routing&nbsp;</span><span class="java_literal">'routes.groovy'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;</span><span class="java_literal">'about&nbsp;route'</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;get</span><span class="java_separator">(</span><span class="java_literal">'/about'</span><span class="java_separator">),</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matches</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redirectionType&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;FORWARD</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">'/WEB-INF/pages/about.gtpl'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">...</span><span class="java_plain"></span></code></pre> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Routes example - test</h2> 
+        <pre class=" code"><code><span class="java_separator">...</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;</span><span class="java_literal">'number&nbsp;route&nbsp;for&nbsp;not&nbsp;a&nbsp;number'</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">!</span><span class="java_plain">post</span><span class="java_separator">(</span><span class="java_literal">'/number/NaN'</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;</span><span class="java_literal">'number&nbsp;route'</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;post</span><span class="java_separator">(</span><span class="java_literal">'/number/123'</span><span class="java_separator">),</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matches</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variables</span><span class="java_separator">.</span><span class="java_plain">number&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">'123'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redirectionType&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;REDIRECT</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">'/number.groovy?number=123'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>What else is supported?</h2> 
+        <p>Verify routes for put, delete and all methods</p> 
+        <p>Test ignored routes</p> 
+        <p>Check email and jabber routes</p> 
+        <p>Test routes with single and double star wildcards</p> 
+        <p>Assert route caching</p> 
+        <p>Test capability-aware routes</p> 
+        <p>Verify namespaced routes</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide title-slide"> 
+      <div class="inner"> 
+        <div class="title-slide-content"> 
+          <h1>Testing the whole stack?</h1> 
+        </div> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Why functional tests?</h2> 
+        <p>Template outputs</p> 
+        <p>JavaScript</p> 
+        <p>Integration of all layers</p> 
+        <p>Everything you're not able to unit test</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Running Gaelyk functional tests</h2> 
+        <p>Gradle GAE plugin supports running functional tests since 0.7</p> 
+        <pre class=" code"><code><span class="java_plain">gradle&nbsp;gaeFunctionalTest</span></code></pre> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Tools</h2> 
+        <p>Geb</p> 
+        <p>Gaelyk Remote Control</p> 
+        <p>Gaelyk Functional Test Tools</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Geb</h2> 
+        <p>It's a browser automation solution</p> 
+        <p>Can be used for acceptance testing of web applications</p> 
+        <p>WebDriver under the hood</p> 
+        <p>JQuery-like content selection</p> 
+        <p>Page Object modeling of content</p> 
+        <p>Adapters for multiple test frameworks:</p> 
+        <ul> 
+          <li>Spock</li> 
+          <li>JUnit</li> 
+          <li>TestNG</li> 
+          <li>EasyB</li> 
+        </ul> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Gaelyk Remote Control</h2> 
+        <p>Allows to run arbitrary code in a remote Gaelyk application</p> 
+        <p>Slightly modified version of Groovy Remote</p> 
+        <p>Adds all Gaelyk specific variables to the context of commands</p> 
+        <p>Installed by adding an endpoint served by <code><span class="java_type">RemoteControlServlet</span><span class="java_plain"></span></code></p> 
+        <p>Works only in local mode</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Gaelyk Functional Test Tools</h2> 
+        <p>Simplifies accessing remote application with Gaelyk Remote</p> 
+        <p>Easy way to clean up datastore after test execution</p> 
+        <p>Provides a DSL to set up datastore state</p> 
+        <p>Allows to login into the application with a single method call</p> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide title-slide"> 
+      <div class="inner"> 
+        <div class="title-slide-content"> 
+          <h1>Let's get our hands dirty</h1> 
+        </div> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide title-slide"> 
+      <div class="inner"> 
+        <div class="title-slide-content"> 
+          <h1>&quot;Testing has to be made easy, otherwise it will never get done&quot;</h1> 
+          <p>Luke Daley</p> 
+        </div> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide"> 
+      <div class="inner"> 
+        <h2>Links</h2> 
+        <ul> 
+          <li>Gaelyk - gaelyk.org</li> 
+          <li>Gaelyk Spock Helpers - github.com/gaelyk/gaelyk-spock</li> 
+          <li>Geb - gebish.org</li> 
+          <li>Gaelyk Remote - github.com/erdi/gaelyk-remote</li> 
+          <li>Gaelyk Functional Test Tools - github.com/erdi/gaelyk-functional-test</li> 
+          <li><p>My blog - blog.proxerd.pl</p></li> 
+        </ul> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section> 
+    <section class="slide title-slide"> 
+      <div class="inner"> 
+        <div class="title-slide-content"> 
+          <h1>Questions?</h1> 
+        </div> 
+        <div class="logo-left"></div> 
+        <div class="logo-right"></div> 
+      </div> 
+    </section>   
+    <div class="deck-notes"> 
+      <div class="deck-notes-header">
+        Slide Notes…
+      </div> 
+      <div class="deck-notes-container"></div> 
+    </div> 
+  </body>
+</html>

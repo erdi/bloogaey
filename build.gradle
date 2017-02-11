@@ -1,6 +1,5 @@
 apply plugin: 'gaelyk'
 apply plugin: 'idea'
-apply plugin: 'gae-geb'
 
 def compatibilityVersion = 1.5
 sourceCompatibility = compatibilityVersion
@@ -12,8 +11,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.4'
-		classpath 'org.gradle.api.plugins:gradle-gae-geb-plugin:0.3'
+		classpath 'org.gradle.api.plugins:gradle-gaelyk-plugin:0.4.1'
 	}
 }
 
@@ -22,8 +20,8 @@ repositories {
 }
 
 dependencies {
-	def gaeVersion = '1.7.4'
-	def groovyVersion = '1.8.6'
+	def gaeVersion = '1.9.42'
+	def groovyVersion = '1.8.7'
 	def gaelykVersion = '1.1'
 
 	compile "org.gaelyk:gaelyk:$gaelykVersion"

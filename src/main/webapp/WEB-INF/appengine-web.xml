@@ -3,6 +3,8 @@
     
     <version>6</version>
 
+    <runtime>java8</runtime>
+
     <!-- Enable concurrent requests by default to serve requests in parallel -->
     <threadsafe>true</threadsafe>
 
